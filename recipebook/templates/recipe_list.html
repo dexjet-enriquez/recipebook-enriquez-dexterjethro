@@ -1,15 +1,12 @@
-<!doctype html>
-<html lang="en-US">
-  <head>
-    <h1>Recipe Book</h1>
-  </head>
-  <body>
-    <ul>
-      {%for recipe in recipes%}
-      <li>
-        <a href="{{recipe.link}}"> {{recipe.name}}</a>
-      </li>
-      {% endfor %}
-    </ul>
-  </body>
-</html>
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %}Recipe List{% endblock %} 
+{% block content %}
+  <ul>
+    {% for recipe in recipes %}
+    <li>
+      <a href="{{ recipe.link }}"> {{ recipe.name }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
