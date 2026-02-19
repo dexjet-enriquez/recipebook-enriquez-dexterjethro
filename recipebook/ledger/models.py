@@ -44,7 +44,7 @@ class RecipeIngredient(models.Model):
         related_name="ingredients")
 
     def __str__(self):
-        return '{} of {}'.format(self.quantity, self.ingredient.name)
+        return '{} - {} of {}'.format(self.recipe, self.quantity, self.ingredient.name)
 
     class Meta:
         ordering = ['ingredient']
