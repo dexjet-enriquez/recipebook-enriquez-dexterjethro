@@ -9,7 +9,7 @@ class Ingredient(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('ingredient-detail', args=[str(self.name)])
+        return reverse('ledger:ingredient-detail', kwargs={'pk': self.pk})
 
     class Meta:
         ordering = ['name']
@@ -24,7 +24,7 @@ class Recipe(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('recipe-detail', args=[str(self.name)])
+        return reverse('ledger:recipe-detail', kwargs={'pk': self.pk})
 
     class Meta:
         ordering = ['name']
