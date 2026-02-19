@@ -33,14 +33,18 @@ class Recipe(models.Model):
 
 
 class RecipeIngredient(models.Model):
-    quantity = models.IntegerField()
+    quantity = models.CharField(max_length=100)
     ingredient = models.ForeignKey(
-        Ingredient, on_delete=models.CASCADE, related_name="recipe")
+        Ingredient,
+        on_delete=models.CASCADE,
+        related_name="recipe")
     recipe = models.ForeignKey(
-        Recipe, on_delete=models.CASCADE, related_name="ingredients")
+        Recipe,
+        on_delete=models.CASCADE,
+        related_name="ingredients")
 
     def __str__(self):
-        return '{} {}'.format(self.quantity, self.ingredient.name)
+        return '{} of {}'.format(self.quantity, self.ingredient.name)
 
     class Meta:
         ordering = ['ingredient']
