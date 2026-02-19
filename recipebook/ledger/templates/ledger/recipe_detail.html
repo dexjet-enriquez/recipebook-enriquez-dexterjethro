@@ -5,7 +5,7 @@
 <ul>
     {% for ingredient in recipe.ingredients.all %}
         <li>
-            {{ ingredient.quantity }} of {{ ingredient.ingredient.name }}
+            {{ ingredient.ingredient.name }} - {{ ingredient.quantity }}
         </li>
     {% endfor %}
 </ul>
