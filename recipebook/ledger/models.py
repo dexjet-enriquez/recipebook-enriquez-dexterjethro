@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
+from django.core.validators import MinLengthValidator
 
 
 class Ingredient(models.Model):
@@ -50,3 +52,12 @@ class RecipeIngredient(models.Model):
         ordering = ['ingredient']
         verbose_name = 'recipe ingredient'
         verbose_name_plural = 'recipe ingredients'
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50)
+    short_bio = models.TextField(validators=[MinLengthValidator(256)])
+
+    def __str__(self):
+        return self.name
