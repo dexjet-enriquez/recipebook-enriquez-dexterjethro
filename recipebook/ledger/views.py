@@ -6,6 +6,7 @@ from django.shortcuts import render
 from .models import Recipe
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Recipe
 
@@ -16,7 +17,7 @@ class RecipeListView(ListView):
     context_object_name = 'recipes'
 
 
-class RecipeDetailView(DetailView):
+class RecipeDetailView(LoginRequiredMixin, DetailView):
     model = Recipe
     template_name = 'ledger/recipe_detail.html'
     context_object_name = 'recipe'

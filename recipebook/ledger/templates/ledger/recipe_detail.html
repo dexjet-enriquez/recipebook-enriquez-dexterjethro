@@ -1,8 +1,9 @@
 {% extends 'base.html' %} 
 {% load static %}
 {% block title %}{{ recipe.name }}{% endblock %} 
+{% block page_heading %}{{ recipe.name }}{% endblock %}
 {% block content %}
-<h2>Recipe created by {{recipe.author.name}}</h2>
+<h4>Recipe created by {{recipe.author.name}}</h4>
 <ul>
     {% for ingredient in recipe.ingredients.all %}
         <li>

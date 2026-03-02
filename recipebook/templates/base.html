@@ -6,7 +6,15 @@
     {% block styles %}{% endblock %}
   </head>
   <body>
+    <header>
     <h1>Recipe Book</h1>
+    {% if user.is_authenticated %}
+      {% include 'registration/logout.html' %}
+    {% else %}
+      <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+    </header>
+    <h2>{% block page_heading %}{% endblock %}</h2>
     <div id="content">{% block content %}{% endblock %}</div>
     {% block scripts %}{% endblock %}
   </body>
