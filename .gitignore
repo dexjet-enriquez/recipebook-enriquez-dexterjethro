@@ -5,3 +5,4 @@ recipebook/db.sqlite3
 recipebook/ledger/__pycache__
 recipebook/ledger/migrations/__pycache__
 .DS_Store
+media/
