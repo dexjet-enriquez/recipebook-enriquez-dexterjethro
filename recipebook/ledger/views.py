@@ -1,14 +1,15 @@
-from django.shortcuts import render
-
-# Create your views here.
+from urllib import request
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Recipe
+from django.tasks import Task
+from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Recipe
+from .forms import RecipeAddForm
 
 
 class RecipeListView(ListView):
@@ -21,3 +22,16 @@ class RecipeDetailView(LoginRequiredMixin, DetailView):
     model = Recipe
     template_name = 'ledger/recipe_detail.html'
     context_object_name = 'recipe'
+
+
+class RecipeAddView(LoginRequiredMixin, CreateView):
+    model = Recipe
+    template_name = 'ledger/recipe_add_form.html'
+    form_class = RecipeAddForm
+    success_url = reverse_lazy('ledger:recipe-list')
+
+    def get_context_data(self, **kwargs):  # done to fix form conflict login form
+        context = super().get_context_data(**kwargs)
+        context['recipe_form'] = context.get('form')
+        context['form'] = None
+        return context
