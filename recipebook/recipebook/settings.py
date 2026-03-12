@@ -124,3 +124,6 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/recipes/list'
 LOGOUT_REDIRECT_URL = '/accounts/login'
+
+MEDIA_ROOT = os.getenv('MEDIA_ROOT')
+MEDIA_URL = '/media/'

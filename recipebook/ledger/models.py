@@ -67,3 +67,19 @@ class RecipeIngredient(models.Model):
         ordering = ['ingredient']
         verbose_name = 'recipe ingredient'
         verbose_name_plural = 'recipe ingredients'
+
+
+class RecipeImage(models.Model):
+    image = models.ImageField(upload_to='images/', null=False, blank=False,)
+    description = models.CharField(max_length=255)
+    recipe = models.ForeignKey(
+        Recipe,
+        on_delete=models.CASCADE,
+        related_name="images")
+
+    def __str__(self):
+        return '{} image'.format(self.recipe)
+
+    class Meta:
+        verbose_name = 'recipe image'
+        verbose_name_plural = 'recipe images'
