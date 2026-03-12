@@ -3,12 +3,18 @@
 {% block title %}{{ recipe.name }}{% endblock %} 
 {% block page_heading %}{{ recipe.name }}{% endblock %}
 {% block content %}
-<h4>Recipe created by {{recipe.author.name}}</h4>
-<ul>
-    {% for ingredient in recipe.ingredients.all %}
-        <li>
-            {{ ingredient.ingredient.name }} - {{ ingredient.quantity }}
-        </li>
+    {% for image in recipe.images.all %}
+        <img src="{{ image.image.url }}" alt="{{ image.description }}" height="300">
+    {% empty %}
+        <p>This recipe has no available images</p>
     {% endfor %}
-</ul>
+        
+    <h4>Recipe created by {{recipe.author.name}}</h4>
+    <ul>
+        {% for ingredient in recipe.ingredients.all %}
+            <li>
+                {{ ingredient.ingredient.name }} - {{ ingredient.quantity }}
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
