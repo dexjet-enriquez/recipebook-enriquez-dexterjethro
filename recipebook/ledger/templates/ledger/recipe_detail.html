@@ -8,7 +8,9 @@
     {% empty %}
         <p>This recipe has no available images</p>
     {% endfor %}
-        
+    <p> Got more images? 
+        <a href="{% url 'ledger:recipe-add-image' recipe.id %}">Add them here!</a>
+    </p>
     <h4>Recipe created by {{recipe.author.name}}</h4>
     <ul>
         {% for ingredient in recipe.ingredients.all %}
@@ -17,4 +19,6 @@
             </li>
         {% endfor %}
     </ul>
+    <hr>
+    <p><a href="{% url 'ledger:recipe-list' %}">Back to Recipe List</a></p>
 {% endblock %}

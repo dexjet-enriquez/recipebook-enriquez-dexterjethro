@@ -6,7 +6,8 @@
     <h4>Share us your recipe!</h4>
     <form method="post">
         {% csrf_token %}
-        {{ recipe_form.as_p }}
+        {{ recipe_add_form.as_p }}
         <button type="submit">Submit</button>
     </form>
+    <p><a href="{% url 'ledger:recipe-list' %}">Back to Recipe List</a></p>
 {% endblock %}

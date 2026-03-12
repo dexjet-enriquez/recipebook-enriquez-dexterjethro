@@ -1,0 +1,15 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %}Add an Image to this Recipe{% endblock %} 
+{% block page_heading %}Add an Image to this Recipe{% endblock %}
+{% block content %}
+    <h4>Got an image of this recipe? Add it here!</h4>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ recipe_add_image_form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    <p><a href="{% url 'ledger:recipe-detail' pk=view.kwargs.pk %}">Back to Recipe</a></p>
+
+    
+{% endblock %}
